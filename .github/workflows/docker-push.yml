@@ -1,9 +1,7 @@
 name: Deploy Images to GHCR
 
 on:
-  push:
-    branches:
-      - *
+  push: branches
 
 jobs:
   docker-push:
