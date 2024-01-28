@@ -18,6 +18,8 @@ RUN mkdir -p "$ENSHROUDED_PATH" \
 FROM ghcr.io/goover/steam:proton AS runtime
 LABEL org.opencontainers.image.source="https://github.com/tchupp/enshrouded"
 
+USER root
+
 ENV DEBIAN_FRONTEND "noninteractive"
 ENV ENSHROUDED_PATH "/home/steam/enshrouded"
 ENV ENSHROUDED_CONFIG "${ENSHROUDED_PATH}/enshrouded_server.json"
