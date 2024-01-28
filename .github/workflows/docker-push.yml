@@ -1,7 +1,11 @@
 name: Deploy Images to GHCR
 
 on:
-  push: branches
+  schedule:
+    - cron: '30 * * * *'
+  push:
+    branches:
+      - tests
 
 jobs:
   docker-push:
