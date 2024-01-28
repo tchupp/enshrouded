@@ -26,7 +26,7 @@ jobs:
           sha_short="$(git rev-parse --short HEAD)"
           docker_image_repo="ghcr.io/tchupp/enshrouded"
           
-          docker build . --tag "$docker_image_repo:$sha_short"
+          docker build -f Containerfile --tag "$docker_image_repo:$sha_short" .
           docker tag "$docker_image_repo:$sha_short" "$docker_image_repo:latest" 
           docker push "$docker_image_repo:$sha_short"
           docker push "$docker_image_repo:latest"
