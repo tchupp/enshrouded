@@ -24,4 +24,11 @@ ENV ENSHROUDED_CONFIG "${ENSHROUDED_PATH}/enshrouded_server.json"
 
 COPY --from=installer "$ENSHROUDED_PATH" "$ENSHROUDED_PATH"
 
+ENV SRCDS_APPID "2278520"
+ENV STEAM_DIR "/home/steam/.steam/steam/"
+ENV STEAM_COMPAT_CLIENT_INSTALL_PATH "/home/steam/.steam/steam"
+ENV STEAM_COMPAT_DATA_PATH "/home/steam/.steam/steam/steamapps/compatdata/${SRCDS_APPID}"
+
+RUN mkdir -p "/home/steam/.steam/steam/steamapps/compatdata/${SRCDS_APPID}"
+
 CMD ["proton", "run", "./enshrouded_server.exe"]
