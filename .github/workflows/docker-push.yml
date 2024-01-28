@@ -31,6 +31,10 @@ jobs:
           docker_image_repo="ghcr.io/tchupp/enshrouded"
           
           docker build -f Containerfile --tag "$docker_image_repo:$sha_short" .
-          docker tag "$docker_image_repo:$sha_short" "$docker_image_repo:latest" 
           docker push "$docker_image_repo:$sha_short"
-          docker push "$docker_image_repo:latest"
+          
+          # if we are on the default branch, also push latest
+          if [[ ${{github.ref}} == 'refs/heads/main' ]]; then
+            docker tag "$docker_image_repo:$sha_short" "$docker_image_repo:latest" 
+            docker push "$docker_image_repo:latest"
+          fi
