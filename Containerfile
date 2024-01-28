@@ -16,6 +16,7 @@ RUN mkdir -p "$ENSHROUDED_PATH" \
       && "$STEAM_CMD_PATH/steamcmd.sh" +@sSteamCmdForcePlatformType windows +force_install_dir "$ENSHROUDED_PATH" +login anonymous +app_update 2278520 validate +quit
 
 FROM ghcr.io/goover/steam:proton AS runtime
+LABEL org.opencontainers.image.source="https://github.com/tchupp/enshrouded"
 
 ENV DEBIAN_FRONTEND "noninteractive"
 ENV ENSHROUDED_PATH "/home/steam/enshrouded"
